@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const RPC_URL: string = 'https://rpc.getshio.com';
 const RPC_TIMEOUT: number = 250; // 250ms
+const AUCTION_DELAY: number = 300; // 300ms
 
 /**
  * Notify Shio to execute an auction with the given transaction bytes.
@@ -33,7 +34,7 @@ export function executeAuction(encodedTxBytes: string): Promise<void> {
       .then((resp) => {
         // The response is not important, we just need to wait for the auction to complete.
         console.log('Shio executeAuction response:', resp.data);
-        resolve();
+        setTimeout(resolve, AUCTION_DELAY);
       })
       .catch(reject);
   });
