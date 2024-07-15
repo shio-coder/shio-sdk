@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const RPC_URL: string = 'http://rpc.getshio.com';
+const RPC_URL: string = 'https://rpc.getshio.com';
 const RPC_TIMEOUT: number = 250; // 250ms
 const AUCTION_DELAY: number = 300; // 300ms
 
