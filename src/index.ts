@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const RPC_URL: string = 'https://rpc.getshio.com';
+const RPC_URL: string = 'http://rpc.getshio.com';
 const RPC_TIMEOUT: number = 250; // 250ms
 const AUCTION_DELAY: number = 300; // 300ms
 
@@ -13,14 +13,15 @@ const AUCTION_DELAY: number = 300; // 300ms
  * Wallet SDK, the user transaction would have already been sequenced and executed, in whice case, 
  * the previous execution result will be returned immediately, making the whole process transparent.
  *  
- * @param encodedTxBytes Base64-encoded string of the transaction bytes.
+ * @param encodedTxData Base64-encoded string of the transaction bytes (represents TransactionData).
+ * @param encodedSig Base64-encoded string of the signature bytes (represents Signature).
  * @returns A promise that resolves when a sufficient delay has passed, or an error occurs.
  */
-export function executeAuction(encodedTxBytes: string): Promise<void> {
+export function executeAuction(encodedTxData: string, encodedSig: string): Promise<void> {
   const payload = {
     jsonrpc: '2.0',
     method: 'shio_executeAuction',
-    params: [encodedTxBytes],
+    params: [encodedTxData, encodedSig],
     id: 1
   };
   return new Promise((resolve, reject) => {
