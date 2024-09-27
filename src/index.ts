@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const RPC_URL: string = 'https://rpc.getshio.com';
-const RPC_TIMEOUT: number = 250; // 250ms
+const MAX_DELAY: number = 500; // 500ms
 const AUCTION_DELAY: number = 300; // 300ms
 
 /**
@@ -25,12 +25,15 @@ export function executeAuction(encodedTxData: string, encodedSig: string): Promi
     id: 1
   };
   return new Promise((resolve, reject) => {
+    // Unconditionally resolve after a delay, regardless of the response.
+    setTimeout(resolve, MAX_DELAY);
+
     axios
       .post(RPC_URL, payload, {
         headers: {
           'Content-Type': 'application/json'
         },
-        timeout: RPC_TIMEOUT,
+        timeout: MAX_DELAY,
       })
       .then((resp) => {
         // The response is not important, we just need to wait for the auction to complete.
