@@ -2,20 +2,16 @@
   "name": "shio-sdk",
   "version": "1.0.5",
   "description": "",
-  "main": "src/index.ts",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^20.14.10",
-    "globals": "^15.8.0",
-    "typescript": "^5.5.3",
-    "tsc": "^2.0.4"
-  },
   "dependencies": {
     "axios": "^1.7.2"
-  }
+  },
+  "module": "./index.js",
+  "types": "./index.d.ts"
 }
